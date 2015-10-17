@@ -101,6 +101,7 @@ function GM:BaseStart()
 	end
 
 	timer.Create("SpawningZombies",1,0, function()
+		GAMEMODE:GameCheck()
 	GAMEMODE.Int_SpawnCounter = GAMEMODE.Int_SpawnCounter + 1
 		if GAMEMODE.Int_SpawnCounter >= GAMEMODE.ZombieData[GetGlobalString("RE2_Difficulty")].ZombieSpawnRate[GAMEMODE.int_DifficultyLevel] then
 			GAMEMODE.Int_SpawnCounter = 0
