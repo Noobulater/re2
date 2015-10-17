@@ -359,15 +359,15 @@ function GUI_VoteMenu(voting)
 			GUI_Difficulty:SelectItem(norm)
 
 			function GUI_Difficulty:Think()
-				if GUI_Difficulty:GetSelectedLine() == easy then
+				if GUI_Difficulty:GetSelectedLine() == 1 then
 					VoteOption["Difficulty"] = "Easy"
-				elseif GUI_Difficulty:GetSelectedLine() == norm then
+				elseif GUI_Difficulty:GetSelectedLine() == 2 then
 						VoteOption["Difficulty"] = "Normal"
-				elseif GUI_Difficulty:GetSelectedLine() == diff then
+				elseif GUI_Difficulty:GetSelectedLine() == 3 then
 						VoteOption["Difficulty"] = "Difficult"
-				elseif GUI_Difficulty:GetSelectedLine() == exp then
+				elseif GUI_Difficulty:GetSelectedLine() == 4 then
 						VoteOption["Difficulty"] = "Expert"
-				elseif GUI_Difficulty:GetSelectedLine() == suc then
+				elseif GUI_Difficulty:GetSelectedLine() == 5 then
 						VoteOption["Difficulty"] = "Suicidal"
 				end
 			end
