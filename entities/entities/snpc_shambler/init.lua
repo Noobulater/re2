@@ -10,9 +10,9 @@ function ENT:Initialize()
         self:SetModel("models/nmr_zombie/berny.mdl")
     end
 
-    //self.Entity:SetCollisionGroup( COLLISION_GROUP_NPC )
-    //self.Entity:SetCollisionBounds( Vector(-4,-4,0), Vector(4,4,64) ) // nice fat shaming
-    self:SetSolidMask(MASK_NPCSOLID_BRUSHONLY)
+    self.Entity:SetCollisionGroup( COLLISION_GROUP_NPC )
+    self.Entity:SetCollisionBounds( Vector(-4,-4,0), Vector(4,4,64) ) // nice fat shaming
+    //self:SetSolidMask(MASK_NPCSOLID_BRUSHONLY)
 
     self.loco:SetDeathDropHeight(200)   //default 200
     self.loco:SetAcceleration(400)      //default 400

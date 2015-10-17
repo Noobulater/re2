@@ -7,7 +7,7 @@ function GUI_MerchantMenu()
 	s:Play()
 	s:ChangeVolume(0.2)
 	GUI_Background:SetSize(SW/2,SH/2)
-	GUI_Background:SetPos(0,0)
+	GUI_Background:SetPos(SW/4,SH/4)
 	GUI_Background:SetDraggable(true)
 	GUI_Background:SetVisible(true)
 	GUI_Background:SetTitle("")
@@ -21,7 +21,9 @@ function GUI_MerchantMenu()
 							end
 	GUI_Background:MakePopup()
 	GUI_Background.btnClose.DoClick = function()
-										client:EmitSound(table.Random(GAMEMODE.MerchantSounds.MerchantLeave))
+										local s = CreateSound(client, table.Random(GAMEMODE.MerchantSounds.MerchantLeave))
+										s:Play()
+										s:ChangeVolume(0.2)
 										GUI_Background:Remove()
 										end
 
@@ -119,10 +121,14 @@ function GUI_LoadWeapons(GUI_Weapons_Panel)
 		GUI_Weapon_BuyItem_Button.DoClick = function(GUI_Weapon_BuyItem_Button)
 												if client:GetNWInt("Money") >= tonumber(GAMEMODE.Items[data.Item].Price) then
 													RunConsoleCommand("inv_BuyItem",weapon)
-													client:EmitSound(table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+													local s = CreateSound(client, table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+													s:Play()
+													s:ChangeVolume(0.2)
 													GlobalBuyGUIs = {GUI_Inventory_Panel}
 												else
-													client:EmitSound("reg/merchant/notenoughcash.wav")
+													local s = CreateSound(client, "reg/merchant/notenoughcash.wav")
+													s:Play()
+													s:ChangeVolume(0.2)
 												end
 											end
 
@@ -153,9 +159,13 @@ function GUI_LoadWeapons(GUI_Weapons_Panel)
 				GUI_Weapon_BuyAmmo_Button.DoClick = function(GUI_Weapon_BuyAmmo_Button)
 														if client:GetNWInt("Money") >= tonumber(GAMEMODE.Items[AmmoType.item].Price) then
 															RunConsoleCommand("inv_BuyItem",AmmoType.item)
-															client:EmitSound(table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+															local s = CreateSound(client, table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+															s:Play()
+															s:ChangeVolume(0.2)
 														else
-															client:EmitSound("reg/merchant/notenoughcash.wav")
+															local s = CreateSound(client, "reg/merchant/notenoughcash.wav")
+															s:Play()
+															s:ChangeVolume(0.2)
 														end
 													end
 
@@ -415,9 +425,13 @@ function GUI_LoadItems(GUI_Items_Panel)
 			GUI_Item_BuyItem_Button.DoClick = function(GUI_Item_BuyItem_Button)
 												if client:GetNWInt("Money") >= tonumber(GAMEMODE.Items[item].Price) then
 													RunConsoleCommand("inv_BuyItem",item)
-													client:EmitSound(table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+													local s = CreateSound(client, table.Random(GAMEMODE.MerchantSounds.MerchantBuy))
+													s:Play()
+													s:ChangeVolume(0.2)
 												else
-													client:EmitSound("reg/merchant/notenoughcash.wav")
+													local s = CreateSound(client, "reg/merchant/notenoughcash.wav")
+													s:Play()
+													s:ChangeVolume(0.2)
 												end
 											end
 

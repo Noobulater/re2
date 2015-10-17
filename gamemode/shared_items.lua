@@ -704,7 +704,7 @@ GM.Items["item_expbarrel"] = {
 	DropedEnt:SetPos(ply:EyePos() + (ply:GetAimVector() * 30))
 	DropedEnt:SetAngles(ply:EyeAngles())
 	DropedEnt:Spawn()
-	DropedEnt:SetOwner(ply)
+	//DropedEnt:SetOwner(ply)
 
 	if tr.HitWorld then
 		local vFlushPoint = tr.HitPos - ( tr.HitNormal * 512 )	// Find a point that is definitely out of the object in the direction of the floor
