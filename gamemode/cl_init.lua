@@ -78,7 +78,7 @@ function OptionsMenu()
 		file.Write(FilePath1,Options["Music"])
 		local FilePath1 = "RE2/Content.txt"
 		file.Write(FilePath1,tostring(Options["Content"]))
-		if Sound_GlobalMusic != nil then
+		if Sound_GlobalMusic != nil && Sound_GlobalMusic.Sound != nil then
 			Sound_GlobalMusic.Sound:ChangeVolume( Options["Music"] )
 		end
 	end
