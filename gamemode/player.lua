@@ -71,7 +71,9 @@ function GM:PlayerSpawn(ply)
 		ply:SetNWInt("Time",0)
 		ply:SetNWInt("MaxHP", 100)
 		ply:SetNWInt("Immunity", 25)
+		ply:AllowFlashlight(true)
 	else
+		ply:AllowFlashlight(false)
 		if GetGlobalBool("Re2_Crows") then
 			ply:BecomeCrow()
 		else

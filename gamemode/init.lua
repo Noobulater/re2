@@ -267,8 +267,8 @@ function GM:SpawningZombies()
 			if !h.Disabled then
 				if #ents.FindByClass("snpc_shambler") < (#player.GetAll() * 2)+20 then
 					local Blocked = false
-					for k,v in pairs(ents.FindInSphere(h:GetPos(),60)) do
-						if v:GetClass() == "snpc_*" then
+					for k,v in pairs(ents.FindInSphere(h:GetPos(),100)) do
+						if v:GetClass() == "snpc_shambler" then
 							Blocked = true
 						end
 					end

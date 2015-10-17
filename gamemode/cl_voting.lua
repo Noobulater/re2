@@ -452,6 +452,7 @@ function GUI_VoteMenu(voting)
 								GUI_Map_List_Menu:Clear()
 							end
 							GUI_Map_List_Menu:AddLine(k)
+							bool = true
 						end
 					end
 					if (bool) then
