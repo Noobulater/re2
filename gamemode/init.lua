@@ -318,9 +318,9 @@ end
 
 local function ShouldCollideTestHook( ent1, ent2 )
 	if ( ent1:GetClass() == "snpc_shambler" and ent2:GetClass() == "snpc_shambler" ) then
-		if (ent1:getRunning() && !ent2:getRunning()) || (!ent1:getRunning() && ent2:getRunning()) then
+		//if (ent1:getRunning() && !ent2:getRunning()) || (!ent1:getRunning() && ent2:getRunning()) then
 			return false --Returning false makes the entities not collide with eachother
-		end
+		//end
 	elseif ent1:GetClass() == "Quad_Rocket" && ent2:IsPlayer() then
 		return false
 	elseif ent1:GetClass() == "m79_bomb" && ent2:IsPlayer() then
