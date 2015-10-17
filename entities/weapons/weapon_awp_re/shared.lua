@@ -110,6 +110,14 @@ function SWEP:Reload()
 				GAMEMODE:SetPlayerSpeed(self:GetOwner(),self:GetOwner():GetNWInt("Speed"),self:GetOwner():GetNWInt("Speed"))
 			end
 		end
+		if self.Weapon.reloadinfo == nil then
+			for i=0, 100 do
+				if string.find(self.Weapon:GetAnimInfo(i).label, "reload") then
+					self.Weapon.reloadinfo = self.Weapon:GetAnimInfo(i)
+					break
+				end
+			end
+		end
 		self:SetIronsights( false )
 		self.Weapon:SendWeaponAnim(ACT_VM_RELOAD)
 		self:SetNWBool("reloading", true)
@@ -132,7 +140,7 @@ function SWEP:Reload()
 				end
 				self:SetNWBool("reloading", false)
 				self.Weapon:SendWeaponAnim(ACT_VM_IDLE)
-				self.Owner:GetViewModel():SetPlaybackRate(1.0)	
+				self.Owner:GetViewModel():SetPlaybackRate(1.0)
 			end
 		end)
 	end
