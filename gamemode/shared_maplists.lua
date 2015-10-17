@@ -15,7 +15,7 @@ GM.MapListTable["re2_acrophobia_b2"] = {Votable = true,}
 
 --GM.MapListTable["re2_lab_b2"] = {Votable = true,}
 
-GM.MapListTable["re2_fortress_001"] = {Votable = true,}
+GM.MapListTable["re2_fortress_b5"] = {Votable = true,}
 
 --GM.MapListTable["re2_subway_b1"] = {Votable = true,}
 
