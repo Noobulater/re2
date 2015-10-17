@@ -445,36 +445,45 @@ function GUI_VoteMenu(voting)
 
 			function GUI_Gamemode_Selection:OnSelect(index,value,data)
 				if value == "Escape" then
-
-					VoteOption["Game"] = value
-
-					GUI_Map_List_Menu:Clear()
-
+					local bool = false
 					for k,v in pairs(GAMEMODE.MapListTable) do
 						if v.Escape != nil then
+							if (!bool) then
+								GUI_Map_List_Menu:Clear()
+							end
 							GUI_Map_List_Menu:AddLine(k)
 						end
 					end
-
-					GUI_Map_List_Menu:SelectFirstItem()
-
-					VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+					if (bool) then
+						GUI_Map_List_Menu:SelectFirstItem()
+						VoteOption["Game"] = value
+						VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+					else
+						GUI_Gamemode_Selection:ChooseOption( "Survivor" )
+						LocalPlayer():ChatPrint("No maps available for ".. value)
+					end
 
 				elseif value != "Escape" && VoteOption["Game"] == "Escape" then
 
-					VoteOption["Game"] = value
-
-					GUI_Map_List_Menu:Clear()
-
+					local bool = false
 					for k,v in pairs(GAMEMODE.MapListTable) do
 						if v.Escape == nil then
+							if (!bool) then
+								GUI_Map_List_Menu:Clear()
+							end
 							GUI_Map_List_Menu:AddLine(k)
+							bool = true
 						end
 					end
+					if bool then
+						VoteOption["Game"] = value
 
-					GUI_Map_List_Menu:SelectFirstItem()
+						GUI_Map_List_Menu:SelectFirstItem()
 
-					VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+						VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+					else
+						LocalPlayer():ChatPrint("No maps available for ".. value)
+					end
 				else
 					VoteOption["Game"] = value
 				end
