@@ -407,7 +407,7 @@ GM.Gamemode = {}
 					end,
 		DifficultyFunction = function() -- Called Every 60 seconds
 			if !GetGlobalBool("Re2_Classic") then
-				GAMEMODE.ZombieData.fast = GAMEMODE.ZombieData.fast + 1
+				GAMEMODE.ZombieDatafast = GAMEMODE.ZombieDatafast + 1
 				//table.insert(GAMEMODE.ZombieData.Zombies,"snpc_zombie_crimzon")
 			end
 		end,
@@ -518,7 +518,7 @@ GM.Gamemode = {}
 
 			DifficultyFunction = function()
 				if !GetGlobalBool("Re2_Classic") then
-					GAMEMODE.ZombieData.fast = GAMEMODE.ZombieData.fast + 1
+					GAMEMODE.ZombieDatafast = GAMEMODE.ZombieDatafast + 1
 					//table.insert(GAMEMODE.ZombieData.Zombies,"snpc_zombie_crimzon")
 				end
 			end,
@@ -634,7 +634,7 @@ GM.Gamemode = {}
 
 		DifficultyFunction = function()
 			if !GetGlobalBool("Re2_Classic") then
-				GAMEMODE.ZombieData.fast = GAMEMODE.ZombieData.fast + 1
+				GAMEMODE.ZombieDatafast = GAMEMODE.ZombieDatafast + 1
 				//table.insert(GAMEMODE.ZombieData.Zombies,"snpc_zombie_crimzon")
 			end
 		end,
@@ -687,7 +687,7 @@ GM.Gamemode = {}
 		end,
 		DifficultyFunction = function()
 			if !GetGlobalBool("Re2_Classic") then
-				GAMEMODE.ZombieData.fast = GAMEMODE.ZombieData.fast + 1
+				GAMEMODE.ZombieDatafast = GAMEMODE.ZombieDatafast + 1
 				//table.insert(GAMEMODE.ZombieData.Zombies,"snpc_zombie_crimzon")
 			end
 		end,
@@ -889,7 +889,7 @@ GM.Gamemode = {}
 
 		DifficultyFunction = function()
 			if !GetGlobalBool("Re2_Classic") then
-				GAMEMODE.ZombieData.fast = GAMEMODE.ZombieData.fast + 1
+				GAMEMODE.ZombieDatafast = GAMEMODE.ZombieDatafast + 1
 				//table.insert(GAMEMODE.ZombieData.Zombies,"snpc_zombie_crimzon")
 			end
 		end,

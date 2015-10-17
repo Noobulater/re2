@@ -22,7 +22,7 @@ include("Chests.lua")
 include("Voting.lua")
 include("player_ext.lua")
 
-GAMEMODE.ZombieDatafast.AddWorkshop("536391334")
+resource.AddWorkshop("536391334")
 
 -- DataStreams
 function GM:inv_UpdateSlot(ply,str_Item,int_Slot,int_Amount)
@@ -258,8 +258,8 @@ GM.ZombieData.Zombies = {
 	"snpc_zombie",
 	"snpc_zombie_crimzon",
 }
-GM.ZombieData.slow = 7
-GM.ZombieData.fast = 1
+GM.ZombieDataslow = 7
+GM.ZombieDatafast = 1
 
 function GM:SpawningZombies()
 	if GetGlobalString("Mode") == "On" then
@@ -288,7 +288,7 @@ function GM:SpawningZombies()
 				        "models/nmr_zombie/toby.mdl",
 				    }))
 						ent:setAttackSpeed(GAMEMODE.ZombieData[GetGlobalString("RE2_Difficulty")].ZombieAttackSpeed[GAMEMODE.int_DifficultyLevel])
-						if (math.random(0, GAMEMODE.ZombieDataslow + GAMEMODE.ZombieData.fast) > GAMEMODE.ZombieDataslow) then
+						if (math.random(0, GAMEMODE.ZombieDataslow + GAMEMODE.ZombieDatafast) > GAMEMODE.ZombieDataslow) then
 							ent:setRunning(true)
 							ent:setRunSpeed(ent:getRunSpeed() * math.random(GAMEMODE.ZombieData[GetGlobalString("RE2_Difficulty")].ZombieMinSpeed, GAMEMODE.ZombieData[GetGlobalString("RE2_Difficulty")].ZombieMaxSpeed))
 						else
