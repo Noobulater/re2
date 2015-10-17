@@ -180,7 +180,9 @@ net.Receive( "InvTransfer", function(len)
 
 function CL_MakeTrack( umsg )
 	local music = umsg:ReadString()
-	Sound_GlobalMusic.Sound:Stop()
+	if Sound_GlobalMusic != nil then
+		Sound_GlobalMusic.Sound:Stop()
+	end
 	Sound_CreateTrack(music)
 end
 usermessage.Hook('RE2_MakeTrack', CL_MakeTrack);
