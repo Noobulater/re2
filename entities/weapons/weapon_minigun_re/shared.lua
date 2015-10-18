@@ -4,7 +4,7 @@ if (CLIENT) then
 	SWEP.SlotPos			= 1
 	SWEP.IconLetter			= "V"
 	SWEP.DrawAmmo 			= true
-	SWEP.DrawCrosshair 		= false	
+	SWEP.DrawCrosshair 		= false
 	SWEP.CSMuzzleFlashes 	= true
 	SWEP.SwayScale			= 1.0
 	SWEP.BobScale			= 1.0
@@ -33,7 +33,7 @@ SWEP.Primary.NumShots		= 1
 SWEP.Primary.Cone			= 0
 SWEP.Primary.ClipSize		= 13
 SWEP.Primary.Delay			= 0.08
-SWEP.Primary.Automatic		= true 
+SWEP.Primary.Automatic		= true
 SWEP.Primary.Ammo			= "StriderMinigun"
 
 SWEP.Secondary.ClipSize		= -1

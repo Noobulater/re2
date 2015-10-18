@@ -90,7 +90,7 @@ end
 
 
 function SWEP:CanSecondaryAttack()
-	return true
+	return self:GetNextSecondaryFire() < CurTime()
 end
 
 function SWEP:Holster()

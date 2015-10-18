@@ -19,6 +19,8 @@ GM.MapListTable["re2_fortress_b5"] = {Votable = true,}
 
 GM.MapListTable["re2_subway_b1"] = {Votable = true,}
 
+GM.MapListTable["re2_lodge_survival"] = {Votable = true,}
+
 GM.MapListTable["re2_forest_outpost_b1"] = {Votable = true,}
 
 GM.MapListTable["re2_platforms_b3"] = {Votable = true, Escape = {Reward = 1000, Split = false},} --- if the map has an escape table then it is an escape map

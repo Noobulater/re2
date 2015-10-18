@@ -53,9 +53,10 @@ SWEP.FleshHitSounds = {
 "weapons/knife/knife_hit3.wav",
 "weapons/knife/knife_hit4.wav"
 }
+SWEP.HoldType 			= "knife"
 
 function SWEP:Initialize()
-    if SERVER then self:SetWeaponHoldType("melee") end
+  self:SetWeaponHoldType("knife")
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW)
 end
 
@@ -80,7 +81,7 @@ function SWEP:PrimaryAttack()
 	//self.Weapon:EmitSound("weapons/knife/knife_slash1.wav",100,math.random(90,120))
 	self.Weapon:SendWeaponAnim(ACT_VM_HITCENTER)
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
-	
+
 	if (self.Owner:GetPos() - tr.HitPos):Length() < self.Primary.Range then
 		self.Owner:ViewPunch(Angle(math.Rand(-3,3) * self.Primary.Recoil,math.Rand(-3,3) * self.Primary.Recoil,0))
 		if tr.HitNonWorld then

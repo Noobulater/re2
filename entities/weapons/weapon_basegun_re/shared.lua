@@ -36,7 +36,7 @@ else
 end
 
 function SWEP:Initialize()
-    if SERVER then self:SetWeaponHoldType(self.HoldType) end
+	self:SetWeaponHoldType(self.HoldType)
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW)
 	if self:GetOwner():IsValid() then
 		self:Update()
@@ -111,9 +111,19 @@ function SWEP:Reload()
 		end
 		self:SetIronsights( false )
 		self.Weapon:SendWeaponAnim(ACT_VM_RELOAD)
+
+		if self.Weapon.reloadinfo == nil then
+			for i=0, 100 do
+				if string.find(self.Weapon:GetAnimInfo(i).label, "reload") then
+					self.Weapon.reloadinfo = self.Weapon:GetAnimInfo(i)
+					break
+				end
+			end
+		end
+
 		self.Owner:GetViewModel():SetPlaybackRate((self.Weapon.reloadinfo.numframes/self.Weapon.reloadinfo.fps)/self.ReloadSpeed)
 		self:SetNWBool("reloading", true)
-		self:GetOwner():RestartGesture(self:GetOwner():Weapon_TranslateActivity(ACT_HL2MP_GESTURE_RELOAD))
+		self.Owner:SetAnimation(PLAYER_RELOAD)
 		self:SetNextPrimaryFire(CurTime() + self.ReloadSpeed)
 		self:SetNextSecondaryFire(CurTime() + self.ReloadSpeed)
 		timer.Simple(self.ReloadSpeed, function()
@@ -192,6 +202,7 @@ function SWEP:Deploy()
 	self:SetIronsights( false )
 	self.Weapon:SendWeaponAnim(ACT_VM_DRAW)
 	self:Update()
+	self:SetWeaponHoldType(self.HoldType)
 	self.Weapon:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
 	for i=0, 100 do
 		if string.find(self.Weapon:GetAnimInfo(i).label, "reload") then

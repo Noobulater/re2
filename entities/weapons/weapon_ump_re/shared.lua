@@ -11,10 +11,10 @@ if (CLIENT) then
 	killicon.AddFont("weapon_Ump","CSKillIcons",SWEP.IconLetter,Color(255,80,0,255))
 end
 if (SERVER) then
-AddCSLuaFile("shared.lua")
-SWEP.HoldType 			= "smg"
+	AddCSLuaFile("shared.lua")
 end
 
+SWEP.HoldType 			= "smg"
 SWEP.Base				= "weapon_basegun_re"
 
 SWEP.ViewModelFOV		= 62
@@ -34,7 +34,7 @@ SWEP.Primary.Damage			= 12
 SWEP.Primary.NumShots		= 1
 SWEP.Primary.Cone			= 0.1
 SWEP.Primary.ClipSize		= 25
-SWEP.Primary.Automatic		= true 
+SWEP.Primary.Automatic		= true
 SWEP.Primary.Ammo			= "smg1"
 
 SWEP.Secondary.ClipSize		= -1

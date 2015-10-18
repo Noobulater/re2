@@ -4,7 +4,7 @@ if (CLIENT) then
 	SWEP.SlotPos			= 0
 	SWEP.IconLetter			= "C"
 	SWEP.DrawAmmo 			= true
-	SWEP.DrawCrosshair 		= false	
+	SWEP.DrawCrosshair 		= false
 	SWEP.CSMuzzleFlashes 	= true
 	SWEP.SwayScale			= 1.0
 	SWEP.BobScale			= 1.0
@@ -12,9 +12,8 @@ if (CLIENT) then
 end
 if (SERVER) then
 	AddCSLuaFile("shared.lua")
-	SWEP.HoldType 			= "rpg"
 end
-
+SWEP.HoldType 			= "rpg"
 SWEP.Base				= "weapon_basegun_re"
 
 SWEP.ViewModelFOV		= 50
@@ -33,13 +32,13 @@ SWEP.Primary.NumShots		= 1
 SWEP.Primary.Cone			= 0.07
 SWEP.Primary.ClipSize		= 4
 SWEP.Primary.DefaultClip	= 0
-SWEP.Primary.Delay			= 1.5 
+SWEP.Primary.Delay			= 1.5
 SWEP.Primary.Automatic		= true
 SWEP.Primary.Ammo			= "RPG_Round"
 
 SWEP.Secondary.ClipSize		= -1
 SWEP.Secondary.DefaultClip	= -1
-SWEP.Secondary.Delay		= 1 
+SWEP.Secondary.Delay		= 1
 SWEP.Secondary.Automatic	= false
 SWEP.Secondary.Ammo			= "none"
 
@@ -65,9 +64,9 @@ function SWEP:PrimaryAttack()
 		self.Weapon:EmitSound(self.Primary.Sound,100, 100)
 	if SERVER then
 		self.Weapon:TossWeaponSound();
-	
+
 		local bomb = ents.Create("quad_rocket")
-		
+
 		local v = self:GetOwner():GetShootPos()
 		v = v + self:GetOwner():GetForward() * 20
 		v = v + self:GetOwner():GetRight() * 20
@@ -78,14 +77,14 @@ function SWEP:PrimaryAttack()
 		bomb.Owner = self:GetOwner()
 		bomb:GetPhysicsObject():ApplyForceCenter(self:GetOwner():GetForward() * 10000)
 	end
-	
-	self:GetOwner():ViewPunch(Angle( math.Rand(-1,-1) * self.Primary.Recoil,math.Rand(-1,1) *self.Primary.Recoil,0)) 
+
+	self:GetOwner():ViewPunch(Angle( math.Rand(-1,-1) * self.Primary.Recoil,math.Rand(-1,1) *self.Primary.Recoil,0))
 	self.Weapon:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
 	self:TakePrimaryAmmo(1)
-		
- 	if (game.SinglePlayer() && SERVER) || CLIENT then 
- 		self.Weapon:SetNetworkedFloat("LastShootTime",CurTime()) 
- 	end 
+
+ 	if (game.SinglePlayer() && SERVER) || CLIENT then
+ 		self.Weapon:SetNetworkedFloat("LastShootTime",CurTime())
+ 	end
 end
 
 
@@ -98,6 +97,3 @@ function SWEP:CanPrimaryAttack()
 	end
 	return true
 end
-
-
-

@@ -12,9 +12,8 @@ if (CLIENT) then
 end
 if (SERVER) then
 	AddCSLuaFile("shared.lua")
-SWEP.HoldType 			= "ar2"
 end
-
+SWEP.HoldType 			= "ar2"
 SWEP.Base				= "weapon_basegun_re"
 
 SWEP.ViewModelFOV		= 62
@@ -34,7 +33,7 @@ SWEP.Primary.Damage			= 15
 SWEP.Primary.NumShots		= 1
 SWEP.Primary.Cone			= 0.10
 SWEP.Primary.ClipSize		= 30
-SWEP.Primary.Automatic		= true 
+SWEP.Primary.Automatic		= true
 SWEP.Primary.Ammo			= "smg1"
 
 SWEP.Secondary.ClipSize		= -1
@@ -46,4 +45,3 @@ SWEP.Item = "item_mp5"
 
 SWEP.IronSightsPos = Vector (4.8189, -4.0431, 1.7611)
 SWEP.IronSightsAng = Vector (1.5353, 0.068, 0)
-

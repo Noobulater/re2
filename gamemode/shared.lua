@@ -176,6 +176,11 @@ GM.Music = {
 				{Sound = "/reg/saveroomcvx.mp3", Length = 115},
 				{Sound = "/reg/RE1saveroom.mp3", Length = 165},
 				{Sound = "/reg/freefromfear.mp3", Length = 153},
+				{Sound = "/reg/the_underground_laboratory.mp3", Length = 150},
+				{Sound = "/reg/suspended_doll.mp3", Length = 120},
+				{Sound = "/reg/Serenity.mp3", Length = 90},
+				{Sound = "/reg/infiltration.mp3", Length = 170},
+				{Sound = "/reg/feel_the_tense.mp3", Length = 94},
 			},
 	Battle = {
 				{Sound = "/reg/BattleGame.mp3", Length = 132},
@@ -184,9 +189,14 @@ GM.Music = {
 				{Sound = "/reg/Malf.mp3", Length = 96},
 				{Sound = "/reg/Alexia.mp3", Length = 275},
 				{Sound = "/reg/Tofu_01.mp3", Length = 272},
+				{Sound = "/reg/RE4hunk.mp3", Length = 160},
+				{Sound = "/reg/hellish_agony.mp3", Length = 180},
+				{Sound = "/reg/doomed_city.mp3", Length = 145},
 			},
 	End = {
 			{Sound = "/reg/Results_01.mp3", Length = 120},
+			{Sound = "/reg/Results_02.mp3", Length = 94},
+			{Sound = "/reg/ree_theme.mp3", Length = 125},
 			},
 	}
 
@@ -579,8 +589,8 @@ GM.Gamemode = {}
 				elseif ply == GetGlobalEntity("Thevip") && GetGlobalEntity("Thevip"):Team() == TEAM_HUNK then
 					surface.SetFont("Trebuchet18o")
 					local textx,texty = surface.GetTextSize("You are the Vip")
-					draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 40,Color(255,255,255,255),0,0)
-					DrawIcon(surface.GetTextureID("gui/silkicons/star" ),SW/2 - 8, SH - SH + 16 ,16,16)
+					draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 60,Color(255,255,255,255),0,0)
+					DrawIcon(surface.GetTextureID("gui/silkicons/star" ),SW/2 - 8, SH - SH + 36 ,16,16)
 				end
 			end
 		end,
@@ -936,7 +946,7 @@ GM.Gamemode = {}
 				end
 
 				if ply:GetNWInt("TeamId") == 1 then
-					DrawIcon(surface.GetTextureID("re2_teams/stars" ),SW/2 - 16, SH - SH + 8 ,32,32)
+					DrawIcon(surface.GetTextureID("re2_teams/stars" ),SW/2 - 16, SH - SH + 28 ,32,32)
 					if ply != GetGlobalEntity("Team01_VIP") && GetGlobalEntity("Team01_VIP"):Team() == TEAM_HUNK then
 						local Vipcolor = Color(0,155,0,250)
 						if GetGlobalEntity("Team01_VIP"):Health() >= 75 then
@@ -972,12 +982,12 @@ GM.Gamemode = {}
 					elseif ply == GetGlobalEntity("Team01_VIP") && GetGlobalEntity("Team01_VIP"):Team() == TEAM_HUNK then
 						surface.SetFont("Trebuchet18o")
 						local textx,texty = surface.GetTextSize("You are the Vip")
-						draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 40,Color(255,255,255,255),0,0)
+						draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 60,Color(255,255,255,255),0,0)
 					end
 				elseif ply:GetNWInt("TeamId") == 2 then
-					DrawIcon(surface.GetTextureID("re2_teams/umbrella" ),SW/2 - 16, SH - SH + 8 ,32,32)
+					DrawIcon(surface.GetTextureID("re2_teams/umbrella" ),SW/2 - 16, SH - SH + 28 ,32,32)
 					if ply != GetGlobalEntity("Team02_VIP") && GetGlobalEntity("Team02_VIP"):Team() == TEAM_HUNK then
-						DrawIcon(surface.GetTextureID("re2_teams/umbrella"),SW/2 - 16, SH - SH + 8 ,32,32)
+						DrawIcon(surface.GetTextureID("re2_teams/umbrella"),SW/2 - 16, SH - SH + 28 ,32,32)
 						local Vipcolor = Color(0,155,0,250)
 							if GetGlobalEntity("Team02_VIP"):Health() >= 75 then
 								Vipcolor = Color(0,155,0,250)
@@ -1012,7 +1022,7 @@ GM.Gamemode = {}
 					elseif ply == GetGlobalEntity("Team02_VIP") && GetGlobalEntity("Team02_VIP"):Team() == TEAM_HUNK then
 						surface.SetFont("Trebuchet18o")
 						local textx,texty = surface.GetTextSize("You are the Vip")
-						draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 40,Color(255,255,255,255),0,0)
+						draw.SimpleText("You are the Vip","Trebuchet18o",SW/2 - textx/2,SH - SH + 60,Color(255,255,255,255),0,0)
 					end
 				end
 			end,

@@ -23,6 +23,7 @@ include("Voting.lua")
 include("player_ext.lua")
 
 resource.AddWorkshop("536391334")
+resource.AddWorkshop("537154308")
 
 -- DataStreams
 function GM:inv_UpdateSlot(ply,str_Item,int_Slot,int_Amount)

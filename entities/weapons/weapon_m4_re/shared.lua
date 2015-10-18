@@ -4,7 +4,7 @@ if (CLIENT) then
 	SWEP.SlotPos			= 1
 	SWEP.IconLetter			= "w"
 	SWEP.DrawAmmo 			= true
-	SWEP.DrawCrosshair 		= false	
+	SWEP.DrawCrosshair 		= false
 	SWEP.CSMuzzleFlashes 	= true
 	SWEP.SwayScale			= 1.0
 	SWEP.BobScale			= 1.0
@@ -12,9 +12,8 @@ if (CLIENT) then
 end
 if (SERVER) then
 	AddCSLuaFile("shared.lua")
-	SWEP.HoldType 			= "ar2"
 end
-
+SWEP.HoldType 			= "ar2"
 SWEP.Base				= "weapon_basegun_re"
 
 SWEP.ViewModelFOV		= 62
@@ -32,8 +31,8 @@ SWEP.Primary.Damage			= 25
 SWEP.Primary.NumShots		= 1
 SWEP.Primary.Cone			= 0.03
 SWEP.Primary.ClipSize		= 30
-SWEP.Primary.Delay			= 0.15 
-SWEP.Primary.Automatic		= true 
+SWEP.Primary.Delay			= 0.15
+SWEP.Primary.Automatic		= true
 SWEP.Primary.Ammo			= "ar2"
 
 SWEP.Secondary.ClipSize		= -1

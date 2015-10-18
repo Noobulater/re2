@@ -12,9 +12,8 @@ if (CLIENT) then
 end
 if (SERVER) then
 	AddCSLuaFile("shared.lua")
-	SWEP.HoldType 			= "ar2"
 end
-
+SWEP.HoldType 			= "ar2"
 SWEP.Base				= "weapon_basegun_re"
 
 SWEP.ViewModelFOV		= 62

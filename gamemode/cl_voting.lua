@@ -309,10 +309,14 @@ function GUI_VoteMenu(voting)
 		GUI_Vote_Maps_Panel:SetPos(10,40)
 		GUI_Vote_Maps_Panel:SetParent(GUI_Vote_Background_Panel)
 
+		GUI_Map_List_Menu_Icon = vgui.Create("DImage", GUI_Vote_Maps_Panel)
+		GUI_Map_List_Menu_Icon:SetSize(128,128)
+		GUI_Map_List_Menu_Icon:SetPos(GUI_Vote_Maps_Panel:GetWide()/4, 10)
+
 			local GUI_Map_List_Menu = vgui.Create("DListView")
 			GUI_Map_List_Menu:SetParent(GUI_Vote_Maps_Panel)
-			GUI_Map_List_Menu:SetSize(280,530)
-			GUI_Map_List_Menu:SetPos(0,0)
+			GUI_Map_List_Menu:SetSize(280,330)
+			GUI_Map_List_Menu:SetPos(0,150)
 			GUI_Map_List_Menu:SetMultiSelect(false)
 			GUI_Map_List_Menu:AddColumn("Select A Map")
 
@@ -326,7 +330,8 @@ function GUI_VoteMenu(voting)
 
 			GUI_Map_List_Menu.OnRowSelected = function(GUI_Map_List_Menu)
 
-			VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+				VoteOption["Map"] = GUI_Map_List_Menu:GetSelected()[1]:GetValue(1)
+				GUI_Map_List_Menu_Icon:SetImage("maps/"..VoteOption["Map"], "vgui/avatar_default")
 
 			end
 

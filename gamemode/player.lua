@@ -60,12 +60,59 @@ function GM:PlayerInitialSpawn(ply)
 
 end
 
+
+local mdls = {}
+
+mdls["kleiner"] = "models/player/Kleiner.mdl"
+mdls["mossman"] = "models/player/mossman.mdl"
+mdls["alyx"] = "models/player/alyx.mdl"
+mdls["barney"] = "models/player/barney.mdl"
+mdls["breen"] = "models/player/breen.mdl"
+mdls["monk"] = "models/player/monk.mdl"
+mdls["odessa"] = "models/player/odessa.mdl"
+mdls["combine"] = "models/player/combine_soldier.mdl"
+mdls["prison"] = "models/player/combine_soldier_prisonguard.mdl"
+mdls["super"] = "models/player/combine_super_soldier.mdl"
+mdls["police"] = "models/player/police.mdl"
+mdls["gman"] = "models/player/gman_high.mdl"
+
+mdls["female1"] = "models/player/Group01/female_01.mdl"
+mdls["female2"] = "models/player/Group01/female_02.mdl"
+mdls["female3"] = "models/player/Group01/female_03.mdl"
+mdls["female4"] = "models/player/Group01/female_04.mdl"
+mdls["female5"] = "models/player/Group01/female_06.mdl"
+mdls["female7"] = "models/player/Group03/female_01.mdl"
+mdls["female8"] = "models/player/Group03/female_02.mdl"
+mdls["female9"] = "models/player/Group03/female_03.mdl"
+mdls["female10"] = "models/player/Group03/female_04.mdl"
+mdls["female11"] = "models/player/Group03/female_06.mdl"
+
+mdls["male1"] = "models/player/Group01/male_01.mdl"
+mdls["male2"] = "models/player/Group01/male_02.mdl"
+mdls["male3"] = "models/player/Group01/male_03.mdl"
+mdls["male4"] = "models/player/Group01/male_04.mdl"
+mdls["male5"] = "models/player/Group01/male_05.mdl"
+mdls["male6"] = "models/player/Group01/male_06.mdl"
+mdls["male7"] = "models/player/Group01/male_07.mdl"
+mdls["male8"] = "models/player/Group01/male_08.mdl"
+mdls["male9"] = "models/player/Group01/male_09.mdl"
+
+mdls["male10"] = "models/player/Group03/male_01.mdl"
+mdls["male11"] = "models/player/Group03/male_02.mdl"
+mdls["male12"] = "models/player/Group03/male_03.mdl"
+mdls["male13"] = "models/player/Group03/male_04.mdl"
+mdls["male14"] = "models/player/Group03/male_05.mdl"
+mdls["male15"] = "models/player/Group03/male_06.mdl"
+mdls["male16"] = "models/player/Group03/male_07.mdl"
+mdls["male17"] = "models/player/Group03/male_08.mdl"
+mdls["male18"] = "models/player/Group03/male_09.mdl"
+
 function GM:PlayerSpawn(ply)
 
 	if ply:Team() == TEAM_HUNK then
 		ply:SetNWBool("Infected", false)
 		ply:SetNWInt("InfectedPercent", 0)
-		GAMEMODE:PlayerSetModel( ply )
+		ply:SetModel(table.Random(mdls))
 		GAMEMODE:PlayerLoadout(ply)
 		ply:SetNWInt("killcount",0)
 		ply:SetNWInt("Time",0)

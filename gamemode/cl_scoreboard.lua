@@ -122,6 +122,10 @@ function GM:HUDDrawScoreBoard()
 	surface.SetTextPos(xOffset + (boardWidth / 2) - (txWidth/2), y)
 	surface.DrawText( gamemodeName )
 
+
+	paintText(game.GetMap(), "DermaDefaultBold", xOffset + (boardWidth / 2), y + txHeight + 2, Color(255,255,255,255), true, false)
+
+
 	if ( string.len(hostname) > 32 ) then
 		surface.SetFont( "DermaLarge" )
 	else
@@ -235,7 +239,6 @@ function GM:HUDDrawScoreBoard()
 				surface.DrawRect( xOffset, yPosition + (txHeight + 20)/2 - (txHeight + 9)/2, (boardWidth)/(100/plinfo.InfectedPercent), txHeight + 9)
 				surface.SetTextColor( 255,255, 255, 255 )
 				draw.SimpleText( plinfo.InfectedPercent.."%", "Trebuchet18", ScrW()/2, yPosition + (txHeight + 20)/2, textcolor, 0, 1)
-				yPosition = yPosition + txHeight + 9
 			end
 			else
 				surface.SetDrawColor( 200,200, 200, 150 )
@@ -256,36 +259,20 @@ function GM:HUDDrawScoreBoard()
 			local textcolor = Color( 255, 255, 255, alpha )
 			local shadowcolor = Color( 0, 0, 0, alpha * 0.8 )
 
-			if plinfo.Infected && plinfo.IsAlive then
-			draw.SimpleText( plinfo.Name, "Trebuchet18", px+1, py-17, shadowcolor )
-			draw.SimpleText( plinfo.Name, "Trebuchet18", px, py-18, textcolor )
+			draw.SimpleText( plinfo.Name, "Trebuchet18", px+1, py+7, shadowcolor )
+			draw.SimpleText( plinfo.Name, "Trebuchet18", px, py+8, textcolor )
+
 			px = xOffset + boardWidth - (colWidth*3) + 8
-			draw.SimpleText( plinfo.Money, "Trebuchet18", px+1, py-17, shadowcolor )
-			draw.SimpleText( plinfo.Money, "Trebuchet18", px, py-18, textcolor )
+			draw.SimpleText( plinfo.Money, "Trebuchet18", px+1, py+7, shadowcolor )
+			draw.SimpleText( plinfo.Money, "Trebuchet18", px, py+8, textcolor )
 
 			px = xOffset + boardWidth - (colWidth*2) + 8
-			draw.SimpleText( plinfo.Frags, "Trebuchet18", px+1, py-17, shadowcolor )
-			draw.SimpleText( plinfo.Frags, "Trebuchet18", px, py-18, textcolor )
+			draw.SimpleText( plinfo.Frags, "Trebuchet18", px+1, py+7, shadowcolor )
+			draw.SimpleText( plinfo.Frags, "Trebuchet18", px, py+8, textcolor )
 
 			px = xOffset + boardWidth - (colWidth*1) + 8
-			draw.SimpleText( plinfo.Ping, "Trebuchet18", px+1, py-17, shadowcolor )
-			draw.SimpleText( plinfo.Ping, "Trebuchet18", px, py-18, textcolor )
-			else
-				draw.SimpleText( plinfo.Name, "Trebuchet18", px+1, py+7, shadowcolor )
-				draw.SimpleText( plinfo.Name, "Trebuchet18", px, py+8, textcolor )
-
-				px = xOffset + boardWidth - (colWidth*3) + 8
-				draw.SimpleText( plinfo.Money, "Trebuchet18", px+1, py+7, shadowcolor )
-				draw.SimpleText( plinfo.Money, "Trebuchet18", px, py+8, textcolor )
-
-				px = xOffset + boardWidth - (colWidth*2) + 8
-				draw.SimpleText( plinfo.Frags, "Trebuchet18", px+1, py+7, shadowcolor )
-				draw.SimpleText( plinfo.Frags, "Trebuchet18", px, py+8, textcolor )
-
-				px = xOffset + boardWidth - (colWidth*1) + 8
-				draw.SimpleText( plinfo.Ping, "Trebuchet18", px+1, py+7, shadowcolor )
-				draw.SimpleText( plinfo.Ping, "Trebuchet18", px, py+8, textcolor )
-			end
+			draw.SimpleText( plinfo.Ping, "Trebuchet18", px+1, py+7, shadowcolor )
+			draw.SimpleText( plinfo.Ping, "Trebuchet18", px, py+8, textcolor )
 
 			yPosition = yPosition + txHeight + 20
 		end

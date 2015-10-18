@@ -1,8 +1,7 @@
 "Re2"
 {
 	"base"		"base"
-	"title"		"Resident Evil : GarrysMod 2"
+	"title"		"Resident Evil : Garry's Mod 2"
 	"maps"        "re2_"
 	"menusystem"	"1"
 }
-

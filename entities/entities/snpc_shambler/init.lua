@@ -76,7 +76,7 @@ function ENT:RunBehaviour()
         if (!self.Frozen) then
           local enemy = self:findEnemy()
           -- if the position is valid
-          if ( IsValid(enemy) ) then
+          if ( GetGlobalString("Mode") != "End" && IsValid(enemy) ) then
               if self:getRunning() then
                   self.loco:SetDesiredSpeed( self:getRunSpeed() )
                   self:StartActivity( ACT_RUN )
@@ -191,7 +191,7 @@ function ENT:OnKilled( dmginfo )
 
   		killer:AddStat("ZombiesKilled", 1)
 
-  		if killer:GetActiveWeapon():GetClass() == "weapon_knife_re" then
+  		if IsValid(killer:GetActiveWeapon()) && killer:GetActiveWeapon():GetClass() == "weapon_knife_re" then
   			killer:AddStat("KnifeKills",1)
   		end
 
