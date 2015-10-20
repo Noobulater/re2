@@ -106,7 +106,7 @@ function OptionsMenu()
 	Volume_Slider:SetValue(Options["Music"] * 100)
 	Volume_Slider.ValueChanged = function(pSelf, fValue)
 		Options["Music"] = math.Clamp(math.Round(fValue),0,100)/100
-		if Sound_GlobalMusic != nil then
+		if Sound_GlobalMusic != nil && Sound_GlobalMusic.Sound != nil then
 			Sound_GlobalMusic.Sound:ChangeVolume( Options["Music"] )
 		end
 	end
@@ -180,7 +180,7 @@ net.Receive( "InvTransfer", function(len)
 
 function CL_MakeTrack( umsg )
 	local music = umsg:ReadString()
-	if Sound_GlobalMusic != nil then
+	if Sound_GlobalMusic != nil && Sound_GlobalMusic.Sound != nil then
 		Sound_GlobalMusic.Sound:Stop()
 	end
 	Sound_CreateTrack(music)

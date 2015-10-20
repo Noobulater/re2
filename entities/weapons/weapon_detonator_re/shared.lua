@@ -77,12 +77,14 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-	self:SetNextSecondaryFire(CurTime() + 0.5)
-	if (game.SinglePlayer() || CLIENT) then
-		for slot,data in pairs(Inventory) do
-			if data.Item == "item_c4" then
-				RunConsoleCommand("inv_UseItem", data.Item, slot)
-				return
+	if self:CanSecondaryAttack() then
+		self:SetNextSecondaryFire(CurTime() + 0.5)
+		if (game.SinglePlayer() || CLIENT) then
+			for slot,data in pairs(Inventory) do
+				if data.Item == "item_c4" then
+					RunConsoleCommand("inv_UseItem", data.Item, slot)
+					return
+				end
 			end
 		end
 	end

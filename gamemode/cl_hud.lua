@@ -260,7 +260,7 @@ function GM:HUDPaint()
 				else
 					paintText("Dead Zombies : " .. GetGlobalInt("RE2_DeadZombies"),"Trebuchet18o",5,24,Color(200,10,10,255),false,false)
 				end
-				paintText("Condition: "..str_status,"Trebuchet24o",offset,SH - SH/6 + 10,Color(255,255,255,255),false,true)
+				paintText("Condition: "..str_status,"Trebuchet24o",offset,SH - SH/6,Color(255,255,255,255),false,true)
 			end
 		end
 	end
