@@ -40,9 +40,9 @@ Chest = {
 Upgrades = {}
 
 
-	local FilePath = "RE2/Options.txt"
-	local FilePath1 = "RE2/Music.txt"
-	local FilePath2 = "RE2/Content.txt"
+	local FilePath = "re2/options.txt"
+	local FilePath1 = "re2/music.txt"
+	local FilePath2 = "re2/content.txt"
 
 	Options = {}
 	Options["Music"] = 1
@@ -72,11 +72,11 @@ function OptionsMenu()
 	OptionsFrame:MakePopup()
 	OptionsFrame.btnClose.DoClick = function()
 		OptionsFrame:Remove()
-		local FilePath = "RE2/Options.txt"
+		local FilePath = "re2/options.txt"
 		file.Write(FilePath,util.TableToKeyValues(Options["Crosshairs"]))
-		local FilePath1 = "RE2/Music.txt"
+		local FilePath1 = "re2/music.txt"
 		file.Write(FilePath1,Options["Music"])
-		local FilePath1 = "RE2/Content.txt"
+		local FilePath1 = "re2/content.txt"
 		file.Write(FilePath1,tostring(Options["Content"]))
 		if Sound_GlobalMusic != nil && Sound_GlobalMusic.Sound != nil then
 			Sound_GlobalMusic.Sound:ChangeVolume( Options["Music"] )

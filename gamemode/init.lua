@@ -170,7 +170,7 @@ end
 
 function GM:Save(ply)
 	local str_Steam = string.Replace(ply:SteamID(),":",";")
-	local path_FilePath = "RE2/"..str_Steam.."/playerinfo.txt"
+	local path_FilePath = "re2/"..str_Steam.."/playerinfo.txt"
 	local Savetable = {}
 	Savetable["Money"] = ply:GetNWInt("Money")
 	Savetable["Inventory"] = {}
@@ -180,15 +180,15 @@ function GM:Save(ply)
 	Savetable["Chest"] = {}
 	Savetable["Chest"] = ply.RE2Data["Chest"]
 	local StrindedItems = util.TableToKeyValues(Savetable)
-	if (!file.Exists("RE2/"..str_Steam, "DATA")) then
-		file.CreateDir("RE2/"..str_Steam)
+	if (!file.Exists("re2/"..str_Steam, "DATA")) then
+		file.CreateDir("re2/"..str_Steam)
 	end
 	file.Write(path_FilePath,StrindedItems)
 end
 
 function GM:Load(ply)
 	local str_Steam = string.Replace(ply:SteamID(),":",";")
-	local path_FilePath = "RE2/"..str_Steam.."/playerinfo.txt"
+	local path_FilePath = "re2/"..str_Steam.."/playerinfo.txt"
 	ply.RE2Data = {}
 	ply.RE2Data["Inventory"] = {	{Item = "none", Amount = 0},
 		{Item = "none", Amount = 0},	{Item = "none", Amount = 0},	{Item = "none", Amount = 0},

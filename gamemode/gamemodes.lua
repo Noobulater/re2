@@ -1,6 +1,6 @@
 function GM:EstablishRules()
 
-	local FilePath = "RE2/Rules/Rules.txt"
+	local FilePath = "re2/rules/rules.txt"
 
 	if file.Exists(FilePath, "DATA") then
 		local NewRules = util.KeyValuesToTable(file.Read(FilePath))

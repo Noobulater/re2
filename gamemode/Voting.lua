@@ -134,7 +134,7 @@ local RandomDifficulties = {}
 
 
 function GM:DecideVotes()
-	local FilePath = "RE2/Rules/Rules.txt"
+	local FilePath = "re2/rules/rules.txt"
 
 	local gamemode = "Survivor"
 
@@ -202,8 +202,8 @@ function GM:DecideVotes()
 	end
 
 	local VoteTable = {gamemode = gamemode,crows = tostring(Crows),difficulty = NewDifficulty,merchanttime = NewMerchantTime,classic = tostring(Classic),}
-	if (!file.Exists("RE2/Rules/","DATA")) then
-		file.CreateDir("RE2/Rules/", "DATA")
+	if (!file.Exists("re2/rules/","DATA")) then
+		file.CreateDir("re2/rules/", "DATA")
 	end
 
 	file.Write(FilePath,util.TableToKeyValues(VoteTable))
