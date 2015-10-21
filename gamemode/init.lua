@@ -180,9 +180,41 @@ function GM:Save(ply)
 	Savetable["Chest"] = {}
 	Savetable["Chest"] = ply.RE2Data["Chest"]
 	local StrindedItems = util.TableToKeyValues(Savetable)
+
 	if (!file.Exists("re2/"..str_Steam, "DATA")) then
 		file.CreateDir("re2/"..str_Steam)
 	end
+
+	local savestr = ply:GetNWInt("Money") .. "!"
+
+	for b,g in pairs(ply.RE2Data["Chest"]) do
+		if (g.Weapon != nil && g.Weapon != "none") then
+			savestr = savestr .. g.Weapon .. ","
+			savestr = savestr .. g["Upgrades"].pwrlvl .. "," .. g["Upgrades"].acclvl .. "," .. g["Upgrades"].clplvl.. ","  .. g["Upgrades"].fislvl .. "," .. g["Upgrades"].reslvl
+			savestr = savestr .. "|"
+		end
+	end
+	savestr = string.TrimRight(savestr, "|")
+	savestr = savestr .. "!"
+	for b,g in pairs(ply.RE2Data["Upgrades"]) do
+		savestr = savestr .. b .. ","
+
+		savestr = savestr .. g.pwrlvl .. "," .. g.acclvl .. "," .. g.clplvl .. "," .. g.fislvl .. "," .. g.reslvl
+		//for k,v in pairs(g) do
+		//	savestr = savestr .. "," .. v
+		//end
+		savestr = savestr .. "|"
+	end
+	savestr = string.TrimRight(savestr, "|")
+	savestr = savestr .. "!"
+	for b,g in pairs(ply.RE2Data["Inventory"]) do
+		if g.Item != "none" then
+			savestr = savestr .. g.Item  .. "," .. g.Amount .. "|"
+		end
+	end
+	savestr = string.TrimRight(savestr, "|")
+	print(savestr)
+	file.Write("re2/"..str_Steam.."/testsave.txt", savestr)
 	file.Write(path_FilePath,StrindedItems)
 end
 
@@ -215,13 +247,13 @@ function GM:Load(ply)
 		ply:SetNWInt("Money",500)
 		inv_AddToInventory(ply,"item_9mmhandgun")
 	elseif file.Exists(path_FilePath, "DATA") then
-		local savetable = util.KeyValuesToTable(file.Read(path_FilePath) )
+		/*local savetable = util.KeyValuesToTable(file.Read(path_FilePath))
 		local inv = savetable["inventory"]
 		local muney = savetable["money"]
 		local upg = savetable["upgrades"]
 		local chestie = savetable["chest"]
 
-		ply:SetNWInt("Money",tonumber(muney) )
+		ply:SetNWInt("Money",tonumber(muney))
 
 		for k,v in pairs(inv) do
 			if v["item"] != "none" then
@@ -242,7 +274,59 @@ function GM:Load(ply)
 					ply.RE2Data["Chest"][tonumber(k)].Upgrades = {}
 				end
 			end
+		end*/
+
+		//print("----------------")
+		local start = file.Read("re2/"..str_Steam.."/testsave.txt")
+		local lvl1 = string.Split(start, "!")
+		local muney = lvl1[1]
+		local chestie = string.Split(lvl1[2], "|")
+		local upg = string.Split(lvl1[3], "|")
+		local inv = string.Split(lvl1[4], "|")
+
+		local count = 1
+
+		while (count <= #inv) do
+			local invData = string.Split(inv[count], ",")
+			count = count + 1
+			for i=1, tonumber(invData[2]) do
+				inv_AddToInventory(ply,invData[1])
+			end
 		end
+
+		local count = 1
+
+		while (count <= #upg) do
+			local upgData = string.Split(upg[count], ",")
+			count = count + 1
+			ply.RE2Data["Upgrades"][upgData[1]] = {pwrlvl = tonumber(upgData[2]),acclvl = tonumber(upgData[3]),clplvl = tonumber(upgData[4]), fislvl = tonumber(upgData[5]),reslvl = tonumber(upgData[6])}
+		end
+		//PrintTable(ply.RE2Data["Upgrades"])
+		//print("---")
+
+		local count = 1
+
+		while (count <= #chestie) do
+			local chestieData = string.Split(chestie[count], ",")
+			count = count + 1
+			for k,v in pairs(ply.RE2Data["Chest"]) do
+				if v.Weapon == "none" || v.Weapon == 0 then
+					ply.RE2Data["Chest"][tonumber(k)].Weapon = tostring(chestieData[1])
+					ply.RE2Data["Chest"][tonumber(k)].Upgrades = {pwrlvl = tonumber(chestieData[2]), acclvl = tonumber(chestieData[3]), clplvl = tonumber(chestieData[4]), fislvl = tonumber(chestieData[5]),reslvl = tonumber(chestieData[6])}
+					break
+				end
+			end
+		end
+
+		ply:SetNWInt("Money",tonumber(muney))
+
+		//print(lvl1[1])
+		//print("----------------")
+		//PrintTable(string.Split(lvl1[2], "|"))
+		//print("----------------")
+		//PrintTable(string.Split(lvl1[3], "|"))
+		//print("----------------")
+		//PrintTable(string.Split(lvl1[4], "|"))
 	end
 	GAMEMODE:SendDataToAClient(ply)
 end
